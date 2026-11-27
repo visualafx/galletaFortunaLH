@@ -112,6 +112,137 @@ body {
   clip-path: ellipse(130% 100% at 50% 100%);
 }
 
+/* ==========================
+   INTRO DE RESPLANDOR
+========================== */
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center,
+      #7d1029 0%,
+      #430817 35%,
+      #160006 70%,
+      #000000 100%);
+
+  animation: intro-fade 1s ease 2s forwards;
+}
+
+/* RESPLANDOR CENTRAL */
+.intro-glow {
+  position: absolute;
+  width: 40%;
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: radial-gradient(circle,
+      rgba(255, 240, 180, 1) 0%,
+      rgba(255, 190, 70, .8) 10%,
+      rgba(255, 80, 40, .4) 30%,
+      rgba(160, 20, 50, .15) 55%,
+      transparent 75%);
+
+  filter: blur(8px);
+
+  animation: glow-pulse 2s ease-in-out forwards;
+}
+
+/* CHISPAS */
+.intro-sparks {
+  position: absolute;
+  inset: -50%;
+
+  background-image:
+    radial-gradient(circle, #fff9c4 2px, transparent 3px),
+    radial-gradient(circle, #ffcb70 1.5px, transparent 3px),
+    radial-gradient(circle, #ffffff 1px, transparent 2px),
+    radial-gradient(circle, #ffae42 2px, transparent 3px),
+    radial-gradient(circle, #ffe9a0 1px, transparent 2px);
+
+  background-size:
+    130px 170px,
+    190px 220px,
+    90px 140px,
+    240px 180px,
+    160px 250px;
+
+  background-position:
+    20% 30%,
+    80% 20%,
+    50% 70%,
+    10% 80%,
+    90% 60%;
+
+  animation: sparks-float 2.5s linear infinite;
+}
+
+/* PULSO DEL RESPLANDOR */
+@keyframes glow-pulse {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.15);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  65% {
+    opacity: .8;
+    transform: translate(-50%, -50%) scale(.85);
+  }
+
+  100% {
+    opacity: .3;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+}
+
+/* MOVIMIENTO DE CHISPAS */
+@keyframes sparks-float {
+  0% {
+    opacity: 0;
+    transform: scale(.4);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .8;
+    transform: scale(1);
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+/* DESAPARECE LA INTRO */
+@keyframes intro-fade {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* Mantiene la composición vertical en pantallas muy estrechas */
 @media (max-width: 480px) {
   body {
